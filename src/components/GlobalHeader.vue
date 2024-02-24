@@ -43,13 +43,20 @@ router.afterEach((to, from, failure) => {
   selectedKeys.value = [to.path];
 });
 
+const store = useStore();
+
+setTimeout(() => {
+  store.dispatch("user/getLoginUser", {
+    userName: "ivan",
+    role: "admin",
+  });
+}, 3000);
+
 const doMenuClick = (key: string) => {
   router.push({
     path: key,
   });
 };
-
-const store = useStore();
 </script>
 
 <style scoped>
